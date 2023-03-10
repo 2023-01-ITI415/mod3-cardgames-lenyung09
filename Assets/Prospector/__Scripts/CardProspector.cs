@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// This enum defines the variable type eCardState with four named values. // a
 public enum eCardState
 {
     drawpile,
@@ -12,11 +11,10 @@ public enum eCardState
 }
 
 public class CardProspector : Card
-{ // Make CardProspector extend Card // b
+{
     [Header("Dynamic: CardProspector")]
     public eCardState state = eCardState.drawpile;
 
-    // c
     // The hiddenBy list stores which other cards will keep this one face down
     public List<CardProspector> hiddenBy = new List<CardProspector>();
 
@@ -32,9 +30,7 @@ public class CardProspector : Card
     {
         // Uncomment the next line to call the base class version of this method
         // base.OnMouseUpAsButton();
-        // a
         // Call the CardClicked method on the Prospector Singleton
         Prospector.CARD_CLICKED(this);
-        // b
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CardSprites", menuName = "ScriptableObjects/CardSpritesSO")] // a
 public class CardSpritesSO : ScriptableObject
 {
-    // b
     [Header("Card Stock")]
     public Sprite cardBack;
     public Sprite cardBackGold;
@@ -24,13 +23,11 @@ public class CardSpritesSO : ScriptableObject
 
     private static CardSpritesSO S;
 
-    // a
     public static Dictionary<char, Sprite> SUITS { get; private set; } // b
 
     public void Init()
     {
         INIT_STATICS(this);
-        // c
     }
 
     /// <summary>
@@ -44,12 +41,9 @@ public class CardSpritesSO : ScriptableObject
             Debug.LogError("CardSpritesSO.S can’t be set a 2nd time!"); // d
             return;
         }
-        S = cSSO; // Initialize the Singleton each time the game starts
-
-        // Initialize the _SUITS Dictionary
+        S = cSSO;
         SUITS = new Dictionary<char, Sprite>()
         {
-            // e
             { 'C', S.suitClub },
             { 'D', S.suitDiamond },
             { 'H', S.suitHeart },
@@ -91,7 +85,6 @@ public class CardSpritesSO : ScriptableObject
     /// </summary>
     public static void RESET()
     {
-        // g
         S = null;
     }
 }

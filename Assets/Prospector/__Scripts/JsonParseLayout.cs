@@ -28,12 +28,11 @@ public class JsonLayoutSlot : ISerializationCallbackReceiver
     public string layer;
     public string hiddenByString;
 
-    // b
+    
     [System.NonSerialized]
-    // b
+    
     public List<int> hiddenBy;
 
-    // b
 
     /// <summary>
     /// Pulls data from hiddenByString and places it into the hiddenBy List
@@ -84,6 +83,5 @@ public class JsonParseLayout : MonoBehaviour
     {
         layout = JsonUtility.FromJson<JsonLayout>(jsonLayoutFile.text);
         S = this;
-        // e
     }
 }

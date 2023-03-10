@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(JsonParseDeck))]
-// a
 public class Deck : MonoBehaviour
 {
     [Header("Inscribed")]
@@ -19,16 +18,6 @@ public class Deck : MonoBehaviour
     private JsonParseDeck jsonDeck;
     static public GameObject SPRITE_PREFAB { get; private set; }
 
-    /*
-        void Start()
-        {
-            InitDeck();
-            Shuffle(ref cards);
-        }
-    */
-
-
-
     /// <summary>
     /// The Prospector class will call InitDeck to set up the deck and build
     /// all 52 card GameObjects from the jsonDeck and cardSprites information.
@@ -42,12 +31,10 @@ public class Deck : MonoBehaviour
 
         // Get a reference to the JsonParseDeck component
         jsonDeck = GetComponent<JsonParseDeck>();
-        // b
 
         // Create an anchor for all the Card GameObjects in the Hierarchy
         if (GameObject.Find("_Deck") == null)
         {
-            // c
             GameObject anchorGO = new GameObject("_Deck");
             deckAnchor = anchorGO.transform;
         }
@@ -69,9 +56,7 @@ public class Deck : MonoBehaviour
         {
             for (int j = 1; j <= 13; j++)
             {
-                // d
                 c = MakeCard(suits[i], j);
-                // e
                 cards.Add(c);
 
                 // This aligns the cards in nice rows fortesting
@@ -93,7 +78,6 @@ public class Deck : MonoBehaviour
         Card card = go.GetComponent<Card>();
 
         card.Init(suit, rank, startFaceUp);
-        // g
         return card;
     }
 
@@ -103,7 +87,6 @@ public class Deck : MonoBehaviour
     /// <param name="refCards">As a ref, this alters on the original list</param>
     static public void Shuffle(ref List<Card> refCards)
     {
-        // a
         // Create a temporary List to hold the new shuffle order
         List<Card> tCards = new List<Card>();
 
@@ -120,6 +103,5 @@ public class Deck : MonoBehaviour
         }
         // Replace the original List with the temporary List
         refCards = tCards;
-        // c
     }
 }

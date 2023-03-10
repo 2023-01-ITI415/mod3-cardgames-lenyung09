@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement; // We’ll need this line later in the chapter
 
 [RequireComponent(typeof(Deck))]
-// a
 [RequireComponent(typeof(JsonParseLayout))]
 public class Prospector : MonoBehaviour
 {
@@ -58,7 +57,6 @@ public class Prospector : MonoBehaviour
         foreach (Card card in listCard)
         {
             cp = card as CardProspector;
-            // c
             listCP.Add(cp);
         }
         return (listCP);
@@ -90,7 +88,6 @@ public class Prospector : MonoBehaviour
         }
 
         CardProspector cp;
-        // b
         mineIdToCardDict = new Dictionary<int, CardProspector>();
 
         // Iterate through the JsonLayoutSlots pulled from the JSON_Layout
@@ -163,7 +160,6 @@ public class Prospector : MonoBehaviour
 
         // Use MoveToDiscard to move the target card to the correct location
         MoveToDiscard(cp);
-        // c
 
         // Then set a few additional things to make cp the new target
         target = cp; // cp is the new target
@@ -171,7 +167,6 @@ public class Prospector : MonoBehaviour
 
         // Set the depth sorting so that cp is on top of the discardPile
         cp.SetSpriteSortingLayer("Target");
-        // c
         cp.SetSortingOrder(0);
     }
 
@@ -210,7 +205,6 @@ public class Prospector : MonoBehaviour
     /// </summary>
     public void SetMineFaceUps()
     {
-        // d
         CardProspector coverCP;
         foreach (CardProspector cp in mine)
         {
@@ -246,8 +240,7 @@ public class Prospector : MonoBehaviour
                 ScoreManager.TALLY(eScoreEvent.draw);
                 break;
             case eCardState.mine:
-                // More to come here
-                // a
+
                 // Clicking a card in the mine will check if it’s a valid play
                 bool validMatch = true; // Initially assume that it’s valid
 
@@ -258,7 +251,6 @@ public class Prospector : MonoBehaviour
                 // If it’s not an adjacent rank, it’s not valid
                 if (!cp.AdjacentTo(S.target))
                     validMatch = false;
-                // b
 
                 if (validMatch)
                 { // If it’s a valid card
@@ -280,7 +272,6 @@ public class Prospector : MonoBehaviour
     /// </summary>
     void CheckForGameOver()
     {
-        // a
         // If the mine is empty, the game is over
         if (mine.Count == 0)
         {
@@ -311,18 +302,14 @@ public class Prospector : MonoBehaviour
         if (won)
         {
             ScoreManager.TALLY(eScoreEvent.gameWin);
-            // b
         }
         else
         {
-            //Debug.Log("Game Over. You Lost. :(");
-            // a
             ScoreManager.TALLY(eScoreEvent.gameLoss);
         }
 
         // Reset the CardSpritesSO singleton to null
         CardSpritesSO.RESET();
-        // b
         // Reload the scene, resetting the game
         // Note that there are TWO underscores at the beginning of "__Prospector…
         SceneManager.LoadScene("__Prospector_Scene_0");
