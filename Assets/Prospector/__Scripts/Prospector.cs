@@ -5,10 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement; // We’ll need this line later in the chapter
 
 [RequireComponent(typeof(Deck))]
+// a
 [RequireComponent(typeof(JsonParseLayout))]
 public class Prospector : MonoBehaviour
 {
     private static Prospector S; // A private Singleton for Prospector
+
+    [Header("Inscribed")]
+    public float roundDelay = 2f;
 
     [Header("Dynamic")]
     public List<CardProspector> drawPile;
@@ -57,6 +61,7 @@ public class Prospector : MonoBehaviour
         foreach (Card card in listCard)
         {
             cp = card as CardProspector;
+            // c
             listCP.Add(cp);
         }
         return (listCP);
@@ -88,6 +93,7 @@ public class Prospector : MonoBehaviour
         }
 
         CardProspector cp;
+        // b
         mineIdToCardDict = new Dictionary<int, CardProspector>();
 
         // Iterate through the JsonLayoutSlots pulled from the JSON_Layout
@@ -104,7 +110,6 @@ public class Prospector : MonoBehaviour
             cp.SetLocalPos(
                 new Vector3(jsonLayout.multiplier.x * slot.x, jsonLayout.multiplier.y * slot.y, -z)
             );
-            // d
 
             cp.layoutID = slot.id;
             cp.layoutSlot = slot;
@@ -143,9 +148,7 @@ public class Prospector : MonoBehaviour
         // Place it on top of the pile for depth sorting
 
         cp.SetSpriteSortingLayer(jsonLayout.discardPile.layer);
-        // a
         cp.SetSortingOrder(-200 + (discardPile.Count * 3));
-        // b
     }
 
     /// <summary>
@@ -160,6 +163,7 @@ public class Prospector : MonoBehaviour
 
         // Use MoveToDiscard to move the target card to the correct location
         MoveToDiscard(cp);
+        // c
 
         // Then set a few additional things to make cp the new target
         target = cp; // cp is the new target
@@ -240,7 +244,6 @@ public class Prospector : MonoBehaviour
                 ScoreManager.TALLY(eScoreEvent.draw);
                 break;
             case eCardState.mine:
-
                 // Clicking a card in the mine will check if it’s a valid play
                 bool validMatch = true; // Initially assume that it’s valid
 
@@ -264,9 +267,6 @@ public class Prospector : MonoBehaviour
         S.CheckForGameOver();
     }
 
-    /// <summary> > /// Informs the Prospector class that this card has been clicked.
-    /// </summary>
-
     /// <summary>
     /// Test whether the game is over
     /// </summary>
@@ -279,7 +279,9 @@ public class Prospector : MonoBehaviour
             return;
         }
 
-        // If there are still cards in the mine & draw pile the game’s not over > if ( drawPile.Count > 0 ) return;
+        // If there are still cards in the mine & draw pile, the game’s not over >
+        if (drawPile.Count > 0)
+            return;
 
         // Check for remaining valid plays
         foreach (CardProspector cp in mine)
@@ -307,11 +309,18 @@ public class Prospector : MonoBehaviour
         {
             ScoreManager.TALLY(eScoreEvent.gameLoss);
         }
-
         // Reset the CardSpritesSO singleton to null
         CardSpritesSO.RESET();
         // Reload the scene, resetting the game
-        // Note that there are TWO underscores at the beginning of "__Prospector…
+        // Note that there are TWO underscores at the  beginning of "__Prospector…
+        // But wait a moment first, giving the final score a moment to travel
+        Invoke("ReloadLevel", roundDelay);
+        UITextManager.GAME_OVER_UI(won);
+    }
+
+    void ReloadLevel()
+    {
+        // Reload the scene, resetting the game
         SceneManager.LoadScene("__Prospector_Scene_0");
     }
 }
