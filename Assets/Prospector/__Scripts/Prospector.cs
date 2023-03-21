@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement; // We’ll need this line later in the chapter
 
 [RequireComponent(typeof(Deck))]
-// a
 [RequireComponent(typeof(JsonParseLayout))]
 public class Prospector : MonoBehaviour
 {
@@ -27,6 +26,13 @@ public class Prospector : MonoBehaviour
     // A Dictionary to pair mine layout IDs and actual Cards
     private Dictionary<int, CardProspector> mineIdToCardDict;
 
+    //Add Gold and Silver Cards sprites
+    public Sprite goldBack;
+    public Sprite goldFront;
+
+    public Sprite silverBack;
+    public Sprite silverFront;
+
     void Start()
     {
         // Set the private Singleton. We’ll use this later.
@@ -42,6 +48,10 @@ public class Prospector : MonoBehaviour
         Deck.Shuffle(ref deck.cards);
         drawPile = ConvertCardsToCardProspectors(deck.cards);
         LayoutMine();
+
+        //Function to set cards to golden or silver
+        //AddSpecialCards();
+
         MoveToTarget(Draw());
 
         // Set up the draw pile
@@ -122,6 +132,8 @@ public class Prospector : MonoBehaviour
             mineIdToCardDict.Add(slot.id, cp);
         }
     }
+
+    
 
     /// <summary>
     /// Moves the current target card to the discardPile

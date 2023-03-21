@@ -8,8 +8,13 @@ public class CardSpritesSO : ScriptableObject
     [Header("Card Stock")]
     public Sprite cardBack;
     public Sprite cardBackGold;
+
+    public Sprite cardBackSilver;
+
     public Sprite cardFront;
     public Sprite cardFrontGold;
+    public Sprite cardFrontSilver;
+
 
     [Header("Suits")]
     public Sprite suitClub;
@@ -77,7 +82,19 @@ public class CardSpritesSO : ScriptableObject
     /// </summary>
     public static Sprite BACK
     {
+        //Chooses the sprite which is chosen
         get { return S.cardBack; }
+    }
+    public static Sprite BACKGOLD
+    {
+        //Chooses the sprite which is chosen
+        get { return S.cardBackGold; }
+    }
+
+    public static Sprite BACKSILVER
+    {
+        //Chooses the sprite which is chosen
+        get { return S.cardBackSilver; }
     }
 
     /// <summary>

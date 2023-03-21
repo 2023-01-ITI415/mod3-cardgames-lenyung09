@@ -159,7 +159,23 @@ public class Card : MonoBehaviour
     {
         _tGO = Instantiate<GameObject>(Deck.SPRITE_PREFAB, transform);
         _tSRend = _tGO.GetComponent<SpriteRenderer>();
+
+       
+ if (Random.value <= .20f && Random.value > .5f)
+      {
+                _tSRend.sprite = CardSpritesSO.BACKSILVER;
+      }
+            //Gold Card added
+            else if (Random.value <= .5f)
+            {
+                _tSRend.sprite = CardSpritesSO.BACKGOLD;
+            }
+            else {
+                 //Normal
         _tSRend.sprite = CardSpritesSO.BACK;
+            }
+        
+    
         _tGO.transform.localPosition = Vector3.zero;
         _tSRend.sortingOrder = 2;
 
