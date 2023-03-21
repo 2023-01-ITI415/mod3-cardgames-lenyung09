@@ -33,4 +33,8 @@ public class CardProspector : Card
         // Call the CardClicked method on the Prospector Singleton
         Prospector.CARD_CLICKED(this);
     }
+
+    //Gold and Silver Cards Implementation
+    public bool gold;
+    public bool silver;
 }
