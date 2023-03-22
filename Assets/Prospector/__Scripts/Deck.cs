@@ -9,6 +9,11 @@ public class Deck : MonoBehaviour
     public CardSpritesSO cardSprites;
     public GameObject prefabCard;
     public GameObject prefabSprite;
+
+    public GameObject prefabCardGold;
+
+    public GameObject prefabCardSilver;
+
     public bool startFaceUp = true;
 
     [Header("Dynamic")]
@@ -25,6 +30,7 @@ public class Deck : MonoBehaviour
     public void InitDeck()
     {
         // Create a static reference to spritePrefab for the Card class to use
+
         SPRITE_PREFAB = prefabSprite;
         // Call Init method on the CardSpriteSO instance assigned to cardSprites
         cardSprites.Init();
@@ -74,11 +80,33 @@ public class Deck : MonoBehaviour
     /// <returns></returns>
     Card MakeCard(char suit, int rank)
     {
-        GameObject go = Instantiate<GameObject>(prefabCard, deckAnchor); // f
-        Card card = go.GetComponent<Card>();
+        // Silver Card added
+        if (Random.value <= .20f && Random.value > .5f)
+        {
+            GameObject go = Instantiate<GameObject>(prefabCardSilver, deckAnchor); // f
+            Card card = go.GetComponent<Card>();
 
-        card.Init(suit, rank, startFaceUp);
-        return card;
+            card.Init(suit, rank, startFaceUp);
+            return card;
+        }
+        // Gold Card added
+        else if (Random.value <= .5f)
+        {
+            GameObject go = Instantiate<GameObject>(prefabCardGold, deckAnchor); // f
+            Card card = go.GetComponent<Card>();
+
+            card.Init(suit, rank, startFaceUp);
+            return card;
+        }
+        else
+        {
+            //Normal
+            GameObject go = Instantiate<GameObject>(prefabCard, deckAnchor); // f
+            Card card = go.GetComponent<Card>();
+
+            card.Init(suit, rank, startFaceUp);
+            return card;
+        }
     }
 
     /// <summary>

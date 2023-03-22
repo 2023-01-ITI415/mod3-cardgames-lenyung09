@@ -15,7 +15,6 @@ public class CardSpritesSO : ScriptableObject
     public Sprite cardFrontGold;
     public Sprite cardFrontSilver;
 
-
     [Header("Suits")]
     public Sprite suitClub;
     public Sprite suitDiamond;
@@ -95,6 +94,17 @@ public class CardSpritesSO : ScriptableObject
     {
         //Chooses the sprite which is chosen
         get { return S.cardBackSilver; }
+    }
+    public static Sprite FRONTGOLD
+    {
+        //Chooses the sprite which is chosen
+        get { return S.cardFrontGold; }
+    }
+
+    public static Sprite FRONTSILVER
+    {
+        //Chooses the sprite which is chosen
+        get { return S.cardFrontSilver; }
     }
 
     /// <summary>

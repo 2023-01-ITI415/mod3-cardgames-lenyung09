@@ -26,13 +26,6 @@ public class Prospector : MonoBehaviour
     // A Dictionary to pair mine layout IDs and actual Cards
     private Dictionary<int, CardProspector> mineIdToCardDict;
 
-    //Add Gold and Silver Cards sprites
-    public Sprite goldBack;
-    public Sprite goldFront;
-
-    public Sprite silverBack;
-    public Sprite silverFront;
-
     void Start()
     {
         // Set the private Singleton. We’ll use this later.
@@ -132,8 +125,6 @@ public class Prospector : MonoBehaviour
             mineIdToCardDict.Add(slot.id, cp);
         }
     }
-
-    
 
     /// <summary>
     /// Moves the current target card to the discardPile

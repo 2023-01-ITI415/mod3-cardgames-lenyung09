@@ -18,7 +18,7 @@ public class Card : MonoBehaviour
 
     /// <summary>
     /// Creates this Card’s visuals based on suit and rank.
-    /// Note that this method assumes it will be passed avalid suit and rank.
+    /// Note that this method assumes it will be passed a valid suit and rank.
     /// </summary>
     /// <param name="eSuit">The suit of the card (e.g., ’C’)</param> > /// <param name="eRank">The rank from 1 to13</param>
     /// <returns></returns>
@@ -160,22 +160,21 @@ public class Card : MonoBehaviour
         _tGO = Instantiate<GameObject>(Deck.SPRITE_PREFAB, transform);
         _tSRend = _tGO.GetComponent<SpriteRenderer>();
 
-       
- if (Random.value <= .20f && Random.value > .5f)
-      {
-                _tSRend.sprite = CardSpritesSO.BACKSILVER;
-      }
-            //Gold Card added
-            else if (Random.value <= .5f)
-            {
-                _tSRend.sprite = CardSpritesSO.BACKGOLD;
-            }
-            else {
-                 //Normal
-        _tSRend.sprite = CardSpritesSO.BACK;
-            }
-        
-    
+        // Silver Card added
+        // if (_tGO.GetComponent<CardProspector>().gold == true)
+        // {
+        //     _tSRend.sprite = CardSpritesSO.BACKGOLD;
+        // }
+        // // Gold Card added
+        // else if (_tGO.GetComponent<CardProspector>().silver == true)
+        // {
+        //     _tSRend.sprite = CardSpritesSO.BACKSILVER;
+        // }
+        // else
+        // {
+        //     _tSRend.sprite = CardSpritesSO.BACK;
+        // }
+
         _tGO.transform.localPosition = Vector3.zero;
         _tSRend.sortingOrder = 2;
 

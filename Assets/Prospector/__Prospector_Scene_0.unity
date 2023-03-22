@@ -528,6 +528,10 @@ MonoBehaviour:
     type: 3}
   prefabSprite: {fileID: 1000014090761352, guid: 30a6ba41f0d264815a76b64a60ee0b62,
     type: 3}
+  prefabCardGold: {fileID: 3980974739336007212, guid: 67c55feb5cd1a0d4c9753ff3cf11de5b,
+    type: 3}
+  prefabCardSilver: {fileID: 3980974739336007212, guid: 1c71fbf5cedee9041b2d3f4e41b1368e,
+    type: 3}
   startFaceUp: 1
   deckAnchor: {fileID: 0}
   cards: []
