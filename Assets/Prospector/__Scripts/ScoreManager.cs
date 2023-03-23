@@ -231,6 +231,11 @@ public class ScoreManager : MonoBehaviour
     {
         ScoreBoard.SCORE = SCORE; // Show the score on theScoreBoard
         canvasTrans = GameObject.Find("Canvas").transform;
+        chain = 0;
+   scoreRun = 0;
+     score = 0;
+    counter = 0;
+    flag = 0;
     }
 
     /// <summary>
