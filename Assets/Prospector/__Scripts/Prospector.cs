@@ -263,7 +263,23 @@ public class Prospector : MonoBehaviour
                     S.mine.Remove(cp); // Remove it from the tableau List
                     S.MoveToTarget(cp); // Make it the target card
                     S.SetMineFaceUps();
-                    ScoreManager.TALLY(eScoreEvent.mine);
+
+                    // Conditions for card clicked based on card type
+                    if (cp.gold == true)
+                    {
+                        Debug.LogError("GOLD");
+                        ScoreManager.TALLY(eScoreEvent.mineGold);
+                    }
+                    else if (cp.silver == true)
+                    {
+                        Debug.LogError("SILVER");
+                        ScoreManager.TALLY(eScoreEvent.mineSilver);
+                    }
+                    else
+                    {
+                        // Regular card
+                        ScoreManager.TALLY(eScoreEvent.mine);
+                    }
                 }
                 break;
         }

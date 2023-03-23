@@ -84,7 +84,7 @@ public class Deck : MonoBehaviour
     Card MakeCard(char suit, int rank)
     {
         // Silver Card added
-        if (Random.value <= .20f && Random.value > .5f)
+        if (Random.value <= .25f && Random.value > .1f)
         {
             GameObject go = Instantiate<GameObject>(prefabCardSilver, deckAnchor); // f
             Card card = go.GetComponent<Card>();
@@ -95,7 +95,7 @@ public class Deck : MonoBehaviour
             return card;
         }
         // Gold Card added
-        else if (Random.value <= .5f)
+        else if (Random.value <= .1f)
         {
             GameObject go = Instantiate<GameObject>(prefabCardGold, deckAnchor); // f
             Card card = go.GetComponent<Card>();

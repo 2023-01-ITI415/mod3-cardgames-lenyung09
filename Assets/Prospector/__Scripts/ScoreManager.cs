@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // An enum to handle all the possible scoring events
-// For gold and silver cards, you would add mineGold andmineSilver to this enum
+// For gold and silver cards, you would add mineGold and mineSilver to this enum
 public enum eScoreEvent
 {
     draw,
     mine,
+
+    //Adding mineGold and mineSilver
+    mineGold,
+    mineSilver,
     gameWin,
     gameLoss
 }
@@ -37,6 +41,12 @@ public class ScoreManager : MonoBehaviour
     public int chain = 0;
     public int scoreRun = 0;
     public int score = 0;
+
+    public int flag = 0;
+
+    //Tracking Gold score multiplyer
+    public int scoreMulti = 1;
+    public static int prevScoreMulti;
 
     [Header("Check this box to reset the ProspectorHighScore to 100")] // c
     public bool checkToResetHighScore = false;
@@ -79,6 +89,26 @@ public class ScoreManager : MonoBehaviour
                 scoreRun += chain; // add score for this card to run
                 break;
 
+            // When silver card clicked
+            case eScoreEvent.mineSilver: // Remove a Silver card
+                chain++; // increase the score chain
+
+                scoreRun += chain; // add score for this card to run
+
+                chain++;
+
+                scoreRun += chain;
+                flag = 1;
+
+                break;
+
+            //When a gold card clicked
+            case eScoreEvent.mineGold:
+                chain++;
+                scoreRun += chain;
+                scoreMulti++;
+                break;
+
             // These same things need to happen whether it’s a draw, win, or loss
             case eScoreEvent.draw: // Drawing a card
             // f
@@ -86,8 +116,11 @@ public class ScoreManager : MonoBehaviour
             // f
             case eScoreEvent.gameLoss: // Lost the round
                 chain = 0; // resets the score chain
+                scoreRun *= scoreMulti; //Gold score multiplyer
                 score += scoreRun; // add scoreRun to total score
                 scoreRun = 0; // reset scoreRun
+                scoreMulti = 1; //Reset scoreMulti
+                flag = 0;
                 break;
         }
 
@@ -204,7 +237,9 @@ public class ScoreManager : MonoBehaviour
         List<Vector2> fsPts;
         switch (evt)
         {
-            case eScoreEvent.mine: // Remove a mine card
+            case eScoreEvent.mine:
+            case eScoreEvent.mineGold:
+            case eScoreEvent.mineSilver: // Remove a mine card
                 // Create a FloatingScore for this score
                 GameObject go = Instantiate<GameObject>(floatingScorePrefab);
                 go.transform.SetParent(canvasTrans);
@@ -212,8 +247,14 @@ public class ScoreManager : MonoBehaviour
                 // c
                 go.transform.localPosition = Vector3.zero;
                 FloatingScore fs = go.GetComponent<FloatingScore>();
-
-                fs.score = chain; // Set score of fs to the current chain value
+                if (flag == 0)
+                {
+                    fs.score = chain; // Set score of fs to the current chain value
+                }
+                if (flag == 1)
+                {
+                    fs.score = scoreRun;
+                }
 
                 // Get the current mousePosition in Canvas anchor coordinates
                 Vector2 mousePos = Input.mousePosition;
