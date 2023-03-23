@@ -41,7 +41,7 @@ public class ScoreManager : MonoBehaviour
     public int chain = 0;
     public int scoreRun = 0;
     public int score = 0;
-
+    public int tempChain = 0;
     public int flag = 0;
 
     //Tracking Gold score multiplyer
@@ -98,6 +98,7 @@ public class ScoreManager : MonoBehaviour
                 chain++;
 
                 scoreRun += chain;
+
                 flag = 1;
 
                 break;
@@ -238,8 +239,7 @@ public class ScoreManager : MonoBehaviour
         switch (evt)
         {
             case eScoreEvent.mine:
-            case eScoreEvent.mineGold:
-            case eScoreEvent.mineSilver: // Remove a mine card
+            // Remove a mine card
                 // Create a FloatingScore for this score
                 GameObject go = Instantiate<GameObject>(floatingScorePrefab);
                 go.transform.SetParent(canvasTrans);
@@ -247,14 +247,10 @@ public class ScoreManager : MonoBehaviour
                 // c
                 go.transform.localPosition = Vector3.zero;
                 FloatingScore fs = go.GetComponent<FloatingScore>();
-                if (flag == 0)
-                {
-                    fs.score = chain; // Set score of fs to the current chain value
-                }
-                if (flag == 1)
-                {
-                    fs.score = scoreRun;
-                }
+                
+              
+                fs.score = chain; // Set score of fs to the current chain value
+                
 
                 // Get the current mousePosition in Canvas anchor coordinates
                 Vector2 mousePos = Input.mousePosition;
