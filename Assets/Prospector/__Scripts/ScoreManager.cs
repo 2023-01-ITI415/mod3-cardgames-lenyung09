@@ -41,7 +41,7 @@ public class ScoreManager : MonoBehaviour
     public int chain = 0;
     public int scoreRun = 0;
     public int score = 0;
-    public int tempChain = 0;
+    public int counter = 0;
     public int flag = 0;
 
     //Tracking Gold score multiplyer
@@ -96,10 +96,13 @@ public class ScoreManager : MonoBehaviour
                 scoreRun += chain; // add score for this card to run
 
                 chain++;
+                                counter ++;
+
 
                 scoreRun += chain;
 
                 flag = 1;
+                counter ++;
 
                 break;
 
@@ -121,7 +124,7 @@ public class ScoreManager : MonoBehaviour
                 score += scoreRun; // add scoreRun to total score
                 scoreRun = 0; // reset scoreRun
                 scoreMulti = 1; //Reset scoreMulti
-                flag = 0;
+                
                 break;
         }
 
@@ -239,6 +242,8 @@ public class ScoreManager : MonoBehaviour
         switch (evt)
         {
             case eScoreEvent.mine:
+            case eScoreEvent.mineSilver:
+            case eScoreEvent.mineGold:
             // Remove a mine card
                 // Create a FloatingScore for this score
                 GameObject go = Instantiate<GameObject>(floatingScorePrefab);
@@ -248,8 +253,15 @@ public class ScoreManager : MonoBehaviour
                 go.transform.localPosition = Vector3.zero;
                 FloatingScore fs = go.GetComponent<FloatingScore>();
                 
-              
+              if (flag == 0) {
                 fs.score = chain; // Set score of fs to the current chain value
+
+              }
+                if (flag == 1) {
+                    fs.score = chain + counter;
+                    counter = 0;
+                    flag = 0;
+                }
                 
 
                 // Get the current mousePosition in Canvas anchor coordinates
