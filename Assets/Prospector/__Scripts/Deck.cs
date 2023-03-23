@@ -16,11 +16,14 @@ public class Deck : MonoBehaviour
 
     public bool startFaceUp = true;
 
+    private int flag = 0;
+
     [Header("Dynamic")]
     public Transform deckAnchor;
     public List<Card> cards;
 
     private JsonParseDeck jsonDeck;
+
     static public GameObject SPRITE_PREFAB { get; private set; }
 
     /// <summary>
@@ -86,7 +89,9 @@ public class Deck : MonoBehaviour
             GameObject go = Instantiate<GameObject>(prefabCardSilver, deckAnchor); // f
             Card card = go.GetComponent<Card>();
 
-            card.Init(suit, rank, startFaceUp);
+            flag = 2;
+
+            card.Init(suit, rank, flag, startFaceUp);
             return card;
         }
         // Gold Card added
@@ -94,8 +99,8 @@ public class Deck : MonoBehaviour
         {
             GameObject go = Instantiate<GameObject>(prefabCardGold, deckAnchor); // f
             Card card = go.GetComponent<Card>();
-
-            card.Init(suit, rank, startFaceUp);
+            flag = 1;
+            card.Init(suit, rank, flag, startFaceUp);
             return card;
         }
         else
@@ -103,8 +108,8 @@ public class Deck : MonoBehaviour
             //Normal
             GameObject go = Instantiate<GameObject>(prefabCard, deckAnchor); // f
             Card card = go.GetComponent<Card>();
-
-            card.Init(suit, rank, startFaceUp);
+            flag = 0;
+            card.Init(suit, rank, flag, startFaceUp);
             return card;
         }
     }
