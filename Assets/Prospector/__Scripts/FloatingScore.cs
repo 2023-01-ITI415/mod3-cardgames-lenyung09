@@ -15,7 +15,7 @@ public class FloatingScore : MonoBehaviour
 
     [Header("Dynamic")]
     [SerializeField]
-    private int _score = 0; // The backing field for score
+    public int _score = 0; // The backing field for score
 
     // b
     public int score
@@ -25,8 +25,7 @@ public class FloatingScore : MonoBehaviour
         set
         {
             _score = value;
-            textField.text = _score.ToString("#,##0"); // The0 is a zero
-            // d
+            textField.text = _score.ToString("#,##0"); // d
         }
     }
 
@@ -98,7 +97,7 @@ public class FloatingScore : MonoBehaviour
     /// <param name="fs">A FloatingScore passing its score tothis one</param>
     public void FSCallback(FloatingScore fs)
     {
-        score += fs.score;
+        score += fs.score * ScoreManager.scoreMulti;
     } // i
 
     void OnEnable()

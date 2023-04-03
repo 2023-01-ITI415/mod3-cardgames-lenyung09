@@ -45,7 +45,7 @@ public class ScoreManager : MonoBehaviour
     public int flag = 0;
 
     //Tracking Gold score multiplyer
-    public int scoreMulti = 1;
+    public static int scoreMulti = 1;
     public static int prevScoreMulti;
 
     [Header("Check this box to reset the ProspectorHighScore to 100")] // c
@@ -105,8 +105,8 @@ public class ScoreManager : MonoBehaviour
             //When a gold card clicked
             case eScoreEvent.mineGold:
                 chain++;
-                scoreRun += chain;
                 scoreMulti++;
+                scoreRun += chain;
                 break;
 
             // These same things need to happen whether it’s a draw, win, or loss
@@ -124,15 +124,16 @@ public class ScoreManager : MonoBehaviour
                 break;
         }
 
-        string scoreStr = score.ToString("#,##0"); // The 0 is a zero // g
+        string scoreStr = ScoreBoard.finalScore.ToString("#,##0");
+        Log(scoreStr); // The 0 is a zero // g
         // This second switch statement handles round wins and losses
         switch (evt)
         {
             case eScoreEvent.gameWin:
                 // SCORE_THIS_ROUND is used here and in UITextManager
-                SCORE_THIS_ROUND = score - SCORE_FROM_PREV_ROUND;
+                SCORE_THIS_ROUND = ScoreBoard.finalScore;
                 // The next line shows a new syntax forstring interpolation
-                Log($"You won this round! Round score:{SCORE_THIS_ROUND}");
+                Log($"You won this round! Round score:{ScoreBoard.finalScore}");
 
                 // If it’s a win, add the score to the next round
                 // static fields are NOT reset by SceneManager.LoadScene()
@@ -141,9 +142,9 @@ public class ScoreManager : MonoBehaviour
                 // If it’s higher than the HIGH_SCORE, updateHIGH_SCORE
                 if (HIGH_SCORE <= score)
                 {
-                    Log($"Game Win. Your new high score was:{scoreStr}");
-                    HIGH_SCORE = score;
-                    PlayerPrefs.SetInt("ProspectorHighScore", score);
+                    Log($"Game Win. Your new high score was:{ScoreBoard.finalScore}");
+                    HIGH_SCORE = ScoreBoard.finalScore;
+                    PlayerPrefs.SetInt("ProspectorHighScore", ScoreBoard.finalScore);
                 }
                 break;
 
@@ -151,13 +152,13 @@ public class ScoreManager : MonoBehaviour
                 // If it’s a loss, check against the highscore
                 if (HIGH_SCORE <= score)
                 {
-                    Log($"Game Over. Your new high score was:{scoreStr}");
-                    HIGH_SCORE = score;
-                    PlayerPrefs.SetInt("ProspectorHighScore", score);
+                    Log($"Game Over. Your new high score was:{ScoreBoard.finalScore}");
+                    HIGH_SCORE = ScoreBoard.finalScore;
+                    PlayerPrefs.SetInt("ProspectorHighScore", ScoreBoard.finalScore);
                 }
                 else
                 {
-                    Log($"Game Over. Your final score was:{scoreStr}");
+                    Log($"Game Over. Your final score was:{ScoreBoard.finalScore}");
                 }
                 // Reset SCORE_FROM_PREV_ROUND to 0 for a newgame
                 SCORE_FROM_PREV_ROUND = 0;
@@ -225,7 +226,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        ScoreBoard.SCORE = SCORE; // Show the score on theScoreBoard
+        ScoreBoard.SCORE = 0; // Show the score on theScoreBoard
         canvasTrans = GameObject.Find("Canvas").transform;
     }
 

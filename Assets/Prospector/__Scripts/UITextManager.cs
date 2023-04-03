@@ -64,18 +64,18 @@ public class UITextManager : MonoBehaviour
         if (won)
         {
             gameOverText.text = "Round Over";
-            str = "You won this round!\n" + $"Round Score:{ScoreManager.SCORE_THIS_ROUND:#,##0}";
+            str = "You won this round!\n" + $"Round Score:{ScoreBoard.finalScore:#,##0}";
         }
         else
         {
             gameOverText.text = "Game Over";
-            if (ScoreManager.HIGH_SCORE <= score)
+            if (ScoreManager.HIGH_SCORE <= ScoreBoard.finalScore)
             {
-                str = $"You got the high score!\nHigh score: {score:#,##0}";
+                str = $"You got the high score!\nHigh score: {ScoreBoard.finalScore:#,##0}";
             }
             else
             {
-                str = $"Your final score was:\n{score:#,##0}";
+                str = $"Your final score was:\n{ScoreBoard.finalScore:#,##0}";
             }
         }
         roundResultText.text = str;

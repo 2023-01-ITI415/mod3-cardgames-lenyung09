@@ -12,7 +12,9 @@ public class ScoreBoard : MonoBehaviour
 
     [Header("Dynamic")]
     [SerializeField]
-    private int _score = 0;
+    public int _score = 0;
+
+    public static int finalScore;
 
     // The score property also sets the text of the TMP_Text
     public int score
@@ -21,6 +23,9 @@ public class ScoreBoard : MonoBehaviour
         set
         {
             _score = value;
+            finalScore = _score;
+            Debug.LogError("Score of text" + _score);
+
             textMP.text = _score.ToString("#,##0"); // The 0 in #,##0 is a zero
         }
     }
@@ -48,6 +53,6 @@ public class ScoreBoard : MonoBehaviour
     // When called by SendMessage, this adds the fs.score to s.score
     static public void FS_CALLBACK(FloatingScore fs)
     {
-        SCORE += fs.score;
+        SCORE += fs.score * ScoreManager.scoreMulti;
     }
 }
