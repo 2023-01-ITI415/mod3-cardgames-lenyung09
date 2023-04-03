@@ -267,12 +267,10 @@ public class Prospector : MonoBehaviour
                     // Conditions for card clicked based on card type
                     if (cp.gold == true)
                     {
-                        Debug.LogError("GOLD");
                         ScoreManager.TALLY(eScoreEvent.mineGold);
                     }
                     else if (cp.silver == true)
                     {
-                        Debug.LogError("SILVER");
                         ScoreManager.TALLY(eScoreEvent.mineSilver);
                     }
                     else
