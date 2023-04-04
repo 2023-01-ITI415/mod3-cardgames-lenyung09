@@ -25,7 +25,9 @@ public class FloatingScore : MonoBehaviour
         set
         {
             _score = value;
-            textField.text = _score.ToString("#,##0"); // d
+            textField.text = _score.ToString("#,##0");
+            ScoreBoard.finalScore += _score;
+            // d
         }
     }
 
