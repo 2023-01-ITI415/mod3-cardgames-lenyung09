@@ -101,7 +101,7 @@ namespace OtherGame
         /// <param name="fs">A FloatingScore passing its score tothis one</param>
         public void FSCallback(FloatingScore fs)
         {
-            score += fs.score * ScoreManager.scoreMulti;
+            score += fs.score ;
         } // i
 
         void OnEnable()
