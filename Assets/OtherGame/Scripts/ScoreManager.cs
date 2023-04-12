@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+namespace OtherGame{
 // An enum to handle all the possible scoring events
 // For gold and silver cards, you would add mineGold and mineSilver to this enum
 public enum eScoreEvent
@@ -325,4 +325,5 @@ public class ScoreManager : MonoBehaviour
                 break;
         }
     }
+}
 }

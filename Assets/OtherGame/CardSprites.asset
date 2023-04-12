@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbce3730e1d3d4947867a664dbb054e3, type: 3}
   m_Name: CardSprites
   m_EditorClassIdentifier: 
-  cardBack: {fileID: 21300000, guid: a8185ed8d47594bb8a3b8e2d9233f769, type: 3}
+  cardBack: {fileID: 21300000, guid: df7d99e7ffe3953419989d9219b3f1c6, type: 3}
   cardBackGold: {fileID: 21300000, guid: 8ecf4828943064b3a96f6258b54c0f11, type: 3}
   cardBackSilver: {fileID: 21300000, guid: 8382909428efc40dfb1c978ce3041414, type: 3}
   cardFront: {fileID: 21300000, guid: 873a7658b7ec742228520c7b15510f4d, type: 3}

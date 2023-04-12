@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+namespace OtherGame{
 /// <summary>
 /// Stores information about the Layout of the Prospector ine.
 /// </summary>
@@ -84,4 +84,5 @@ public class JsonParseLayout : MonoBehaviour
         layout = JsonUtility.FromJson<JsonLayout>(jsonLayoutFile.text);
         S = this;
     }
+}
 }

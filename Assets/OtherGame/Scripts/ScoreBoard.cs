@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using TMPro; // Be sure not to miss this line. TextMeshPro needs it to work!
-
+namespace OtherGame{
 // The ScoreBoard class manages showing the score to the player
 [RequireComponent(typeof(TMP_Text))]
 public class ScoreBoard : MonoBehaviour
@@ -55,4 +55,5 @@ public class ScoreBoard : MonoBehaviour
     {
         SCORE += fs.score * ScoreManager.scoreMulti;
     }
+}
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+namespace OtherGame{
 [RequireComponent(typeof(JsonParseDeck))]
 public class Deck : MonoBehaviour
 {
@@ -137,4 +137,5 @@ public class Deck : MonoBehaviour
         // Replace the original List with the temporary List
         refCards = tCards;
     }
+}
 }

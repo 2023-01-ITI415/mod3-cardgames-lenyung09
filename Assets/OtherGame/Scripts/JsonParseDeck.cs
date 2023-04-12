@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+namespace OtherGame{
 [System.Serializable]
 public class JsonPip
 {
@@ -70,4 +70,5 @@ public class JsonParseDeck : MonoBehaviour
         }
         return S.deck.cards[rank - 1];
     }
+}
 }

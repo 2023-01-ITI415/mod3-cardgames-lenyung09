@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+namespace OtherGame{
 public enum eCardState
 {
     drawpile,
@@ -37,4 +37,5 @@ public class CardProspector : Card
     //Gold and Silver Cards Implementation
     public bool gold;
     public bool silver;
+}
 }

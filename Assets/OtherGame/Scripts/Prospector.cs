@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.SceneManagement; // We’ll need this line later in the chapter
-
+namespace OtherGame{
 [RequireComponent(typeof(Deck))]
 [RequireComponent(typeof(JsonParseLayout))]
 public class Prospector : MonoBehaviour
@@ -340,4 +340,5 @@ public class Prospector : MonoBehaviour
         // Reload the scene, resetting the game
         SceneManager.LoadScene("__Prospector_Scene_0");
     }
+}
 }
