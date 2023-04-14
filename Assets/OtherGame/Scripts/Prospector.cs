@@ -329,7 +329,7 @@ namespace OtherGame
         void ReloadLevel()
         {
             // Reload the scene, resetting the game
-            SceneManager.LoadScene("__Prospector_Scene_0");
+            SceneManager.LoadScene("GameScene");
         }
     }
 }

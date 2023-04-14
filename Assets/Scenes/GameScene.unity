@@ -182,7 +182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'High Score: 1,000'
+  m_text: 'High Score: 1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -328,8 +328,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278215984
+  m_fontColor: {r: 0.18813656, g: 0.3962264, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -409,11 +409,11 @@ GameObject:
   - component: {fileID: 610544271}
   - component: {fileID: 610544270}
   - component: {fileID: 610544269}
-  - component: {fileID: 610544268}
   - component: {fileID: 610544267}
-  - component: {fileID: 610544266}
   - component: {fileID: 610544264}
-  - component: {fileID: 610544265}
+  - component: {fileID: 610544275}
+  - component: {fileID: 610544274}
+  - component: {fileID: 610544276}
   m_Layer: 0
   m_Name: _MainCamera
   m_TagString: MainCamera
@@ -437,49 +437,6 @@ MonoBehaviour:
   roundResultText: {fileID: 476667809}
   highScoreText: {fileID: 409957257}
   _resultsUIFieldsVisible: 0
---- !u!114 &610544265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610544263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca74ea8b9a3b49d4a8e1ce9af602352b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatingScorePrefab: {fileID: 4446952414020249956, guid: 3b2bfed0339fdeb40bda77876e99be5c,
-    type: 3}
-  floatDuration: 0.75
-  fsPosMid: {x: 0.5, y: 0.9}
-  fsPosRun: {x: 0.5, y: 0.75}
-  fsPosMid2: {x: 0.4, y: 1}
-  fsPosEnd: {x: 0.5, y: 0.95}
-  logScoreEvents: 1
-  chain: 0
-  scoreRun: 0
-  score: 0
-  counter: 0
-  flag: 0
-  checkToResetHighScore: 0
---- !u!114 &610544266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610544263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5cbeadb0ed6b4f48a936a7d0671423a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roundDelay: 2
-  drawPile: []
-  discardPile: []
-  mine: []
-  target: {fileID: 0}
 --- !u!114 &610544267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,26 +463,6 @@ MonoBehaviour:
       y: 0
       layer: 
       xStagger: 0
---- !u!114 &610544268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 610544263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 394a980a7c0873a4dae23fa92cd1bd54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardSprites: {fileID: 11400000, guid: 8d5ae66405cfd5844a8de014db4f37a2, type: 2}
-  prefabCard: {fileID: 3980974739336007212, guid: 2a7e070b98e2f0e4786f5c045d7d30f3,
-    type: 3}
-  prefabSprite: {fileID: 1000014090761352, guid: 30a6ba41f0d264815a76b64a60ee0b62,
-    type: 3}
-  startFaceUp: 1
-  deckAnchor: {fileID: 0}
-  cards: []
 --- !u!114 &610544269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,7 +475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b43e759eee16c946a47c00d2199b586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonDeckFile: {fileID: 4900000, guid: db468a461cbe6114798766a72aae7601, type: 3}
+  jsonDeckFile: {fileID: 4900000, guid: 1803bd855b99b904da86ea82cb40d81a, type: 3}
   deck:
     decorators: []
     cards: []
@@ -616,6 +553,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &610544274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610544263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cbeadb0ed6b4f48a936a7d0671423a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundDelay: 2
+  drawPile: []
+  discardPile: []
+  mine: []
+  target: {fileID: 0}
+--- !u!114 &610544275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610544263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394a980a7c0873a4dae23fa92cd1bd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardSprites: {fileID: 11400000, guid: 0f52837c638bc4e48a015be0cbfb62c2, type: 2}
+  prefabCard: {fileID: 3980974739336007212, guid: 2a7e070b98e2f0e4786f5c045d7d30f3,
+    type: 3}
+  prefabSprite: {fileID: 1000014090761352, guid: 30a6ba41f0d264815a76b64a60ee0b62,
+    type: 3}
+  startFaceUp: 1
+  deckAnchor: {fileID: 0}
+  cards: []
+--- !u!114 &610544276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610544263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca74ea8b9a3b49d4a8e1ce9af602352b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatDuration: 0.75
+  fsPosMid: {x: 0.5, y: 0.9}
+  fsPosRun: {x: 0.5, y: 0.75}
+  fsPosMid2: {x: 0.4, y: 1}
+  fsPosEnd: {x: 0.5, y: 0.95}
+  logScoreEvents: 1
+  chain: 0
+  scoreRun: 0
+  score: 0
+  checkToResetHighScore: 0
 --- !u!1 &1106082085
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,8 +773,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -972,7 +968,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +104
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -981,8 +977,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4288782753
+  m_fontColor: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1058,7 +1054,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1713557272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fabe278919715a9429f5f2eecca32f9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b5045147cf899347887e93193ab0adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _score: 0

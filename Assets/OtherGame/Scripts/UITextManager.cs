@@ -62,22 +62,23 @@ namespace OtherGame
         public void GameOverUI(bool won)
         {
             int score = ScoreManager.SCORE;
+            string final = score.ToString("#,##0");
             string str;
             if (won)
             {
                 gameOverText.text = "Round Over";
-                str = "You won this round!\n" + $"Round Score:{ScoreBoard.finalScore:#,##0}";
+                str = "You won this round!\n" + $"Round Score:{final:#,##0}";
             }
             else
             {
                 gameOverText.text = "Game Over";
-                if (ScoreManager.HIGH_SCORE <= ScoreBoard.finalScore)
+                if (ScoreManager.HIGH_SCORE <= score)
                 {
-                    str = $"You got the high score!\nHigh score: {ScoreBoard.finalScore:#,##0}";
+                    str = $"You got the high score!\nHigh score: {final:#,##0}";
                 }
                 else
                 {
-                    str = $"Your final score was:\n{ScoreBoard.finalScore:#,##0}";
+                    str = $"Your final score was:\n{final:#,##0}";
                 }
             }
             roundResultText.text = str;

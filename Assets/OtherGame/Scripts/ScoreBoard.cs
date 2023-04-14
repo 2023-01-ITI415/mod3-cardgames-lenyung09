@@ -26,7 +26,7 @@ namespace OtherGame
             {
                 _score = value;
                 finalScore = _score;
-                Debug.LogError("Score of text" + _score);
+                //Debug.LogError("Score of text" + _score);
 
                 textMP.text = _score.ToString("#,##0"); // The 0 in #,##0 is a zero
             }
@@ -55,7 +55,7 @@ namespace OtherGame
         // When called by SendMessage, this adds the fs.score to s.score
         static public void FS_CALLBACK(FloatingScore fs)
         {
-            SCORE += fs.score;
+            SCORE += S.score;
         }
     }
 }
